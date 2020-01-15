@@ -675,9 +675,10 @@ def test_dataframe_iterator_classes_indices_order(all_test_images, tmpdir):
     assert flow_forward_iter.class_indices == flow_backward_iter.class_indices
 
     # Test the class_indices with classes input 
-    df = pd.DataFrame([['data/A.jpg', 'A'],['data/B.jpg', 'B']], columns=['filename', 'class'])
-    flow_forward = generator.flow_from_dataframe(df, classes=['A', 'B'])
-    flow_backward = generator.flow_from_dataframe(df, classes=['B', 'A'])
+    df_f2 = pd.DataFrame([['data/A.jpg', 'A'],['data/B.jpg', 'B']], columns=['filename', 'class'])
+    flow_forward = generator.flow_from_dataframe(df_f2, classes=['A', 'B'])
+    df_b2 = pd.DataFrame([['data/A.jpg', 'A'],['data/B.jpg', 'B']], columns=['filename', 'class'])
+    flow_backward = generator.flow_from_dataframe(df_b2, classes=['B', 'A'])
     assert flow_forward.class_indices != flow_backward.class_indices
 
 
